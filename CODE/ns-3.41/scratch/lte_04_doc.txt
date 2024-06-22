@@ -1,0 +1,92 @@
+This is an NS-3 script written in C++ that simulates a Long-Term Evolution (LTE) network with two User Equipment (UE) nodes, one eNodeB (base station), and one remote host. The script sets up a network topology, configures the LTE devices, and runs a simulation to demonstrate the communication between the UEs and the remote host.
+
+Here is a breakdown of the script:
+
+Includes and namespace
+
+The script includes various NS-3 headers, such as core-module.h, network-module.h, internet-module.h, mobility-module.h, lte-module.h, flow-monitor-module.h, and applications-module.h. The using namespace ns3; directive allows the script to use NS-3 classes and functions without qualifying them with the ns3:: prefix.
+
+Main function
+
+The main function is the entry point of the script. It initializes the simulation, sets up the network topology, configures the LTE devices, and runs the simulation.
+
+1. LOG START
+
+The script enables logging for the "LteSimulation" component and sets the log level to INFO.
+
+2. LTE and EPC helpers initialization
+
+The script creates instances of LteHelper and PointToPointEpcHelper to assist with setting up the LTE network and Evolved Packet Core (EPC) components.
+
+3. Node containers setup
+
+The script creates three node containers: ueNodes for the two UEs, enbNodes for the eNodeB, and remoteHostContainer for the remote host.
+
+4. Internet stack for the remote host
+
+The script installs the Internet stack on the remote host node using the InternetStackHelper class.
+
+5. Point-to-point link configuration
+
+The script sets up a point-to-point link between the eNodeB and the remote host using the PointToPointHelper class. It configures the data rate, delay, and IP addressing for the link.
+
+6. Set up the mobility model
+
+The script sets up the mobility model for the eNodeB and UEs using the MobilityHelper class. The eNodeB is fixed at a specific position, while the UEs are configured to move randomly within a certain area.
+
+7. Install LTE devices
+
+The script installs LTE devices on the eNodeB and UEs using the LteHelper class.
+
+8. Set up a UDP application
+
+The script sets up a UDP echo server on one of the UEs and a UDP echo client on the remote host. The client sends packets to the server, which responds with echo messages.
+
+9. Set up another UDP application
+
+The script sets up another UDP echo server on one of the UEs and a UDP echo client on the other UE. The client sends packets to the server, which responds with echo messages.
+
+10. Enable tracing
+
+The script enables tracing for the LTE devices and sets up a flow monitor to collect statistics.
+
+11. NetAnim animator setup
+
+The script sets up a NetAnim animator to visualize the simulation. It configures the node descriptions, images, and colors for the UEs, eNodeB, and remote host.
+
+12. Run the simulation
+
+The script runs the simulation for 10 seconds using the Simulator::Run() function.
+
+13. Flow monitor statistics output
+
+The script serializes the flow monitor statistics to an XML file.
+
+14. Destroy the simulation
+
+The script destroys the simulation using the Simulator::Destroy() function.
+
+Here is a documentation for this script:
+
+LTE Simulation Script
+
+This script simulates a Long-Term Evolution (LTE) network with two User Equipment (UE) nodes, one eNodeB (base station), and one remote host. The script sets up a network topology, configures the LTE devices, and runs a simulation to demonstrate the communication between the UEs and the remote host.
+
+Script Parameters
+
+None
+Script Output
+
+Flow monitor statistics in an XML file
+NetAnim animation file
+Script Configuration
+
+LTE network topology with two UEs, one eNodeB, and one remote host
+Mobility model for UEs and eNodeB
+UDP echo server and client applications
+Flow monitor and NetAnim animator setup
+Script Usage
+
+Compile the script using the NS-3 compiler.
+Run the script using the NS-3 simulator.
+Visualize the simulation using NetAnim.
